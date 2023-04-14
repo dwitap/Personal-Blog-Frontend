@@ -32,8 +32,8 @@ function App() {
         <div className="i2">pict</div>
       </div>
       <div className="scroll">scroll down</div>
-      <div className="about-me">About me</div>
-      <div className="intro">My introducatio</div>
+      <div className="title">About me</div>
+      <div className="sub-title">My introducatio</div>
       <div className="container3">
         <div className="ab1">pict</div>
         <div className="ab2">
@@ -49,6 +49,28 @@ function App() {
             <button className="ab-button">Download cv</button>
           </div>
         </div>
+      </div>
+      <div className="title">Skills</div>
+      <div className="sub-title">My technical level</div>
+      <div class="skills-container1">
+        <div class="skill-item"> 1</div>
+        <div class="skill-item"> 2</div>
+        <div class="skill-item"> 3</div>
+        <div class="skill-item"> 4</div>
+      </div>
+      <div className="skills-container2">
+        <div class="skill-item2"> 5</div>
+        <div class="skill-item2"> 6</div>
+        <div class="skill-item2"> 7</div>
+        <div class="skill-item2"> 8</div>
+        <div class="skill-item2"> 9</div>
+      </div>
+      <div className="title">Services</div>
+      <div className="sub-title">What i offer</div>
+      <div className="service-container">
+        <div className="service-item">1</div>
+        <div className="service-item">2</div>
+        <div className="service-item">3</div>
       </div>
     </div>
   );

@@ -1,38 +1,94 @@
 .App {
+  position:"fixed";
+  z-index: 4;
+  margin: auto;
+  max-width: 1155px;
+  height: 4000px;
+}
+
+.span {
+  color: red;
+}
+
+.upperNav {
+  display: grid;
+  grid-template-columns: 330px repeat(6, 100px);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  align-items: end;
+  margin-left: 120px;
+  margin-top: 46px;
+  margin-right: 120px;
   }
+
+.item-name {
+  width: 118px;
+  height: 31px;
+  font-weight: 800;
+  font-size: 23px;
+  line-height: 31px;
+  text-align: left;
+  color: #31353B
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 120px;
+  margin-top: 127px;
 }
 
-.App-link {
-  color: #61dafb;
+.i1-1 {
+  width: 284px;
+  height: 76px;
+  font-weight: 800;
+  font-size: 55.6452px;
+  line-height: 76px;
+  color: #31353B
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.i1-2 {
+width: 189px;
+height: 22px;
+margin-left: 100px;
+font-weight: 500;
+font-size: 17px;
+line-height: 22px;
+}
+
+.i1-3 {
+  width: 394px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 14.9843px;
+  line-height: 20px;
+  color: #4A4A4A;
+}
+
+.hello-button {
+justify-content: center;
+align-items: center;
+width: 169px;
+height: 44px;
+background: #000000;
+border-radius: 12px;
+color: white;
+}
+
+.i2 {
+  border-radius: 50px;
+  background-color: antiquewhite;
+  margin-right: 120px;
+  text-align: center;
+ }
+
+.scroll {
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  font-size: 13.1364px;
+  line-height: 17px;
+  margin-left: 120px;
+  margin-top: 110px;
+  margin-right: 120px;
+  color: #545353;
 }

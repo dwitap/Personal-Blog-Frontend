@@ -32,6 +32,24 @@ function App() {
         <div className="i2">pict</div>
       </div>
       <div className="scroll">scroll down</div>
+      <div className="about-me">About me</div>
+      <div className="intro">My introducatio</div>
+      <div className="container3">
+        <div className="ab1">pict</div>
+        <div className="ab2">
+          <div className="ab2-1">
+            <div className="ab-item">1</div>
+            <div className="ab-item">2</div>
+            <div className="ab-item">3</div>
+            <div className="ab-item2">
+              UI/UX designer , I create web pages UI /UX userinterface , Ihave
+              years of experience and many clients are happy with the projects
+              carried out.
+            </div>
+            <button className="ab-button">Download cv</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

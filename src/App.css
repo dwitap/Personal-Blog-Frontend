@@ -92,3 +92,83 @@ color: white;
   margin-right: 120px;
   color: #545353;
 }
+
+.about-me {
+  display: block;
+  text-align: center;
+  margin-top: 53px;
+  font-weight: 800;
+  font-size: 35.8559px;
+  line-height: 49px;
+  color: #31353B;
+}
+
+.intro {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 13.1364px;
+  line-height: 17px;
+  color: #545353;
+}
+
+.container3{
+  display: grid;
+  grid-template-columns: repeat(2, 500px);
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.ab1 {
+  width: 354px;
+  height: 302px;
+  margin-top: 76px;
+  border: 9px solid #E9E9E9;
+  border-radius: 22px;
+}
+
+.ab2 {
+  margin-top: 76px;
+}
+
+.ab2-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 124px);
+  grid-column-gap: 62px;
+  margin-right: 120px;
+}
+
+.ab-item {
+  box-sizing: border-box;
+  width: 124px;
+  height: 103px;
+  border: 1px solid #D4D4D4;
+  border-radius: 16px;
+}
+
+.ab-item2 {
+  grid-area: 2 / 1 / 3 / 4;
+  width: 418px;
+  height: 60px;
+  margin-top: 48px;
+  font-weight: 500;
+  font-size: 14.9843px;
+  line-height: 20px;
+  color: #4A4A4A;
+}
+
+.ab-button {
+  grid-area: 3 / 1 / 4 / 4;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 22px;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  width: 172px;
+  height: 44px;
+  margin-top: 33px;
+  background: #000000;
+  border-radius: 12px;
+}

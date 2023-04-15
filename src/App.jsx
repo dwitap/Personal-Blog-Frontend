@@ -209,7 +209,12 @@ function App() {
       <div className="contact">
         <div>
           Talk to me
-          <div className="talk-item">1</div>
+          <div className="talk-item">
+            <div className="talk-ikon"></div>
+            <div className="talk-title">Email</div>
+            <div className="talk-sub">user@gmail.com</div>
+            <div className="talk-desc">with me</div>
+          </div>
           <div className="talk-item">2</div>
           <div className="talk-item">3</div>
         </div>

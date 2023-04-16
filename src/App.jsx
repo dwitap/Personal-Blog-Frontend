@@ -1,6 +1,107 @@
 import "./App.css";
+import axiosInstance from "../src/api/index";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [about, setAbout] = useState([]);
+  const [skill, setSkill] = useState([]);
+  const [service, setService] = useState([]);
+  const [contact, setContact] = useState([]);
+
+  const fetchAbout = async () => {
+    try {
+      const response = await axiosInstance.get("/data/about");
+
+      console.log(response);
+      setAbout(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const renderAbout = () => {
+    return about.map((val, id) => {
+      return (
+        <div className="about-grid">
+          <div className="about-icon">{val.icon}</div>
+          <div className="about-title">{val.title}</div>
+          <div className="about-sub">{val.sub}</div>
+        </div>
+      );
+    });
+  };
+
+  const fetchSkills = async () => {
+    try {
+      const response = await axiosInstance.get("/data/skills");
+
+      console.log(response);
+      setSkill(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchService = async () => {
+    try {
+      const response = await axiosInstance.get("/data/services");
+
+      console.log(response);
+      setService(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const renderService = () => {
+    return service.map((val, id) => {
+      return (
+        <div className="service-item">
+          <div className="service-icon">{val.icon}</div>
+          <div className="service-title">{val.title}</div>
+          <div className="service-sub">
+            {val.sub}
+            <i class="uil uil-arrow-right"></i>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const fetchContact = async () => {
+    try {
+      const response = await axiosInstance.get("/data/contacts");
+
+      console.log(response);
+      setContact(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const renderContact = () => {
+    return contact.map((val, id) => {
+      return (
+        <div className="talk-item">
+          <div className="talk-icon">{val.icon}</div>
+          <div className="talk-title">{val.title}</div>
+          <div className="talk-sub">{val.sub}</div>
+          <div className="talk-desc">
+            {val.desc}
+            <i class="uil uil-arrow-right"></i>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  useEffect(() => {
+    fetchAbout();
+    fetchSkills();
+    fetchService();
+    fetchContact();
+  }, []);
+
   return (
     <div className="App">
       {/* ================ Header ================ */}
@@ -30,11 +131,16 @@ function App() {
             and dedicated to my work.
           </div>
           <br />
-          <button className="hello-button">say Hello</button>
+          <button className="hello-button">
+            say Hello
+            <i class="uil uil-telegram-alt" style={{ marginLeft: "15px" }}></i>
+          </button>
         </div>
         <div className="home-pict">pict</div>
       </div>
-      <div className="scroll">scroll down</div>
+      <div className="scroll">
+        scroll down <i class="uil uil-arrow-down"></i>
+      </div>
 
       {/* ================ About me ================ */}
       <div className="title" id="about">
@@ -45,27 +151,19 @@ function App() {
         <div className="about-pict">pict</div>
         <div className="about-content">
           <div className="about-data">
-            <div className="about-grid">
-              <div className="about-ikon"></div>
-              <div className="about-title">Experience</div>
-              <div className="about-sub">1 + years</div>
-            </div>
-            <div className="about-grid">
-              <div className="about-ikon"></div>
-              <div className="about-title">Completed</div>
-              <div className="about-sub">10 + projects</div>
-            </div>
-            <div className="about-grid">
-              <div className="about-ikon"></div>
-              <div className="about-title">Supports</div>
-              <div className="about-sub">Online 24/7</div>
-            </div>
+            {renderAbout()}
             <div className="about-desc">
               UI/UX designer , I create web pages UI /UX userinterface , Ihave
               years of experience and many clients are happy with the projects
               carried out.
             </div>
-            <button className="about-button">Download cv</button>
+            <button className="about-button">
+              Download cv
+              <i
+                class="uil uil-file-download-alt"
+                style={{ marginLeft: "10px" }}
+              ></i>
+            </button>
           </div>
         </div>
       </div>
@@ -76,53 +174,26 @@ function App() {
       </div>
       <div className="sub-title">My technical level</div>
       <div className="skills-container1">
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"> Figma </div>
-          <div className="skill-item-sub"> UI Design, prototyping </div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
+        {skill.slice(0, 4).map((val) => {
+          return (
+            <div className="skill-grid">
+              <div className="skill-item-icon">{val.icon}</div>
+              <div className="skill-item-title">{val.title}</div>
+              <div className="skill-item-sub">{val.sub}</div>
+            </div>
+          );
+        })}
       </div>
       <div className="skills-container2">
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
-        <div className="skill-grid">
-          <div className="skill-item-ikon"></div>
-          <div className="skill-item-title"></div>
-          <div className="skill-item-sub"></div>
-        </div>
+        {skill.slice(4, 9).map((val) => {
+          return (
+            <div className="skill-grid">
+              <div className="skill-item-icon">{val.icon}</div>
+              <div className="skill-item-title">{val.title}</div>
+              <div className="skill-item-sub">{val.sub}</div>
+            </div>
+          );
+        })}
       </div>
 
       {/* ================ Service ================ */}
@@ -130,21 +201,23 @@ function App() {
         Services
       </div>
       <div className="sub-title">What i offer</div>
-      <div className="service-container">
-        <div className="service-item">
-          <div className="service-ikon"></div>
-          <div className="service-title">Web Designer</div>
-          <div className="service-sub">view more </div>
-        </div>
-        <div className="service-item">2</div>
-        <div className="service-item">3</div>
-      </div>
+      <div className="service-container">{renderService()}</div>
 
       {/* ================ Qualification ================ */}
       <div className="title" id="qualification">
         Qualification
       </div>
       <div className="sub-title">My Personal journey</div>
+      <div className="qualification-grid">
+        <div className="qualification-item">
+          <i class="uil uil-graduation-cap"></i>
+          Education
+        </div>
+        <div className="qualification-item">
+          <i class="uil uil-briefcase"></i>
+          Experience
+        </div>
+      </div>
       <div className="qualification-section">
         <div className="qualification-content">
           <div className="qualification-data">
@@ -200,7 +273,6 @@ function App() {
           </div>
         </div>
       </div>
-
       {/* ================ Contact ================ */}
       <div className="title" id="contact">
         Contact Me
@@ -209,14 +281,7 @@ function App() {
       <div className="contact">
         <div>
           Talk to me
-          <div className="talk-item">
-            <div className="talk-ikon"></div>
-            <div className="talk-title">Email</div>
-            <div className="talk-sub">user@gmail.com</div>
-            <div className="talk-desc">with me</div>
-          </div>
-          <div className="talk-item">2</div>
-          <div className="talk-item">3</div>
+          {renderContact()}
         </div>
         <div>
           Write me your project
@@ -225,7 +290,10 @@ function App() {
             <div className="project-item">Insert your email</div>
             <div className="project-item3">Write your project</div>
           </div>
-          <button className="message-button">Send Message</button>
+          <button className="message-button">
+            Send Message
+            <i class="uil uil-telegram-alt" style={{ marginLeft: "15px" }}></i>
+          </button>
         </div>
       </div>
 

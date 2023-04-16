@@ -169,13 +169,6 @@ a {
   flex-direction: column;
 }
 
-.about-ikon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #000000;
-}
-
 .about-title {
   font-weight: 500;
   font-size: 13.1364px;
@@ -221,6 +214,7 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 10px;
+  height: 150px;
   margin-left: 120px;
   margin-right: 115px;
   margin-top: 82px;
@@ -228,7 +222,6 @@ a {
 
 .skill-grid {
   box-sizing: border-box;
-  height: 140px;
   border: 1px solid #D4D4D4;
   display: flex;
   justify-content: center;
@@ -255,6 +248,7 @@ a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 10px;
+  height: 140px;
   margin-left: 120px;
   margin-right: 115px;
   margin-top: 10px;
@@ -300,6 +294,20 @@ a {
 }
 
 /* ================ Qualification ================ */
+.qualification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  margin-left: 120px;
+  margin-right: 115px;
+  margin-top: 61px;
+  font-weight: 700;
+  font-size: 18.7826px;
+  line-height: 24px;
+  color: #545353;
+  justify-items: center;
+}
+
 .qualification-section {
   margin-left: 120px;
   margin-right: 115px;

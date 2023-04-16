@@ -1,18 +1,20 @@
 import "./App.css";
 import axiosInstance from "../src/api/index";
 import { useEffect, useState } from "react";
+import homePict from "./assets/homePict.png";
+import aboutPict from "./assets/aboutPict.png";
 
 function App() {
   const [about, setAbout] = useState([]);
   const [skill, setSkill] = useState([]);
   const [service, setService] = useState([]);
   const [contact, setContact] = useState([]);
+  const [testimonial, setTestimonial] = useState([]);
 
   const fetchAbout = async () => {
     try {
       const response = await axiosInstance.get("/data/about");
 
-      console.log(response);
       setAbout(response.data.data);
     } catch (err) {
       console.log(err);
@@ -35,7 +37,6 @@ function App() {
     try {
       const response = await axiosInstance.get("/data/skills");
 
-      console.log(response);
       setSkill(response.data.data);
     } catch (err) {
       console.log(err);
@@ -57,7 +58,8 @@ function App() {
     return service.map((val, id) => {
       return (
         <div className="service-item">
-          <div className="service-icon">{val.icon}</div>
+          {/* <div className="service-icon">{val.icon}</div> */}
+          <img className="service-icon" src={val.icon} alt="icon" />
           <div className="service-title">{val.title}</div>
           <div className="service-sub">
             {val.sub}
@@ -68,11 +70,42 @@ function App() {
     });
   };
 
+  const fetchTestimonial = async () => {
+    try {
+      const response = await axiosInstance.get("/data/testimonials");
+
+      setTestimonial(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const renderTestimonial = () => {
+    return testimonial.map((val, id) => {
+      return (
+        <div className="bubble">
+          <div className="grid1">
+            <div className="vl"></div>
+            <div className="testimoni">{val.testi}</div>
+          </div>
+          <div className="grid2">
+            <div className="item1">
+              <div className="testi-image">{val.picture}</div>
+            </div>
+            <div className="item2">
+              <div className="testi-name">{val.title}</div>
+              <div className="testi-desc">{val.sub}</div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
   const fetchContact = async () => {
     try {
       const response = await axiosInstance.get("/data/contacts");
 
-      console.log(response);
       setContact(response.data.data);
     } catch (err) {
       console.log(err);
@@ -100,6 +133,7 @@ function App() {
     fetchSkills();
     fetchService();
     fetchContact();
+    fetchTestimonial();
   }, []);
 
   return (
@@ -136,7 +170,7 @@ function App() {
             <i class="uil uil-telegram-alt" style={{ marginLeft: "15px" }}></i>
           </button>
         </div>
-        <div className="home-pict">pict</div>
+        <img src={homePict} alt="images" />
       </div>
       <div className="scroll">
         scroll down <i class="uil uil-arrow-down"></i>
@@ -148,7 +182,7 @@ function App() {
       </div>
       <div className="sub-title">My introducatio</div>
       <div className="about-container ">
-        <div className="about-pict">pict</div>
+        <img src={aboutPict} alt="images" />
         <div className="about-content">
           <div className="about-data">
             {renderAbout()}
@@ -273,6 +307,14 @@ function App() {
           </div>
         </div>
       </div>
+
+      {/* ================ Testimonial ================ */}
+      <div className="title" id="blog">
+        Testimonial
+      </div>
+      <div className="sub-title">My client saying</div>
+      <div className="testi-container">{renderTestimonial()}</div>
+
       {/* ================ Contact ================ */}
       <div className="title" id="contact">
         Contact Me
@@ -321,10 +363,18 @@ function App() {
         </div>
 
         <div className="footer-socials">
-          <div className="socials-facebook">1</div>
-          <div className="socials-twitter">2</div>
-          <div className="socials-linkedin">3</div>
-          <div className="socials-instagram">4 </div>
+          <div className="socials-facebook">
+            <i class="uil uil-facebook"></i>
+          </div>
+          <div className="socials-twitter">
+            <i class="uil uil-twitter"></i>
+          </div>
+          <div className="socials-linkedin">
+            <i class="uil uil-linkedin"></i>
+          </div>
+          <div className="socials-instagram">
+            <i class="uil uil-instagram"></i>
+          </div>
         </div>
 
         <p className="footer-copy">@krish4alex. All rights reserved</p>

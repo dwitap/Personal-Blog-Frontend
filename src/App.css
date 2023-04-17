@@ -218,6 +218,11 @@ a {
   flex-direction: column;
 }
 
+.skill-item-image {
+  max-width: 70px;
+  max-height: 70px;
+}
+
 .skill-item-title {
   font-weight: 500;
   font-size: 17px;
@@ -412,7 +417,6 @@ a {
   width: 55.65px;
   height: 55.65px;
   border-radius: 50%;
-  background-color: antiquewhite;
 }
 
 .item2 {
@@ -420,6 +424,7 @@ a {
   grid-template-rows: 18px 16px;
   justify-items: start;
   align-content: center;
+  align-items: center;
 }
 
 .testi-name {
@@ -453,6 +458,8 @@ a {
 
 .talk-item {
   box-sizing: border-box;
+  width: 309.24px;
+  height: 152px;
   margin-top: 22px;
   border: 0.873563px solid #DDDDDD;
   border-radius: 11.3563px;

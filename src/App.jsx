@@ -13,19 +13,19 @@ function App() {
 
   const fetchAbout = async () => {
     try {
-      const response = await axiosInstance.get("/data/about");
+      const aboutResponse = await axiosInstance.get("/data/about");
 
-      setAbout(response.data.data);
+      setAbout(aboutResponse.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const renderAbout = () => {
-    return about.map((val, id) => {
+    return about.map((val) => {
       return (
-        <div className="about-grid">
-          <div className="about-icon">{val.icon}</div>
+        <div className="about-grid" key={val.id}>
+          <img src={val?.icon} alt="icon" className="about-icon" />
           <div className="about-title">{val.title}</div>
           <div className="about-sub">{val.sub}</div>
         </div>
@@ -35,9 +35,9 @@ function App() {
 
   const fetchSkills = async () => {
     try {
-      const response = await axiosInstance.get("/data/skills");
+      const skillResponse = await axiosInstance.get("/data/skills");
 
-      setSkill(response.data.data);
+      setSkill(skillResponse.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -45,25 +45,23 @@ function App() {
 
   const fetchService = async () => {
     try {
-      const response = await axiosInstance.get("/data/services");
+      const serviceResponse = await axiosInstance.get("/data/services");
 
-      console.log(response);
-      setService(response.data.data);
+      setService(serviceResponse.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const renderService = () => {
-    return service.map((val, id) => {
+    return service.map((val) => {
       return (
-        <div className="service-item">
-          {/* <div className="service-icon">{val.icon}</div> */}
+        <div className="service-item" key={val.id}>
           <img className="service-icon" src={val.icon} alt="icon" />
           <div className="service-title">{val.title}</div>
           <div className="service-sub">
             {val.sub}
-            <i class="uil uil-arrow-right"></i>
+            <i className="uil uil-arrow-right"></i>
           </div>
         </div>
       );
@@ -72,25 +70,25 @@ function App() {
 
   const fetchTestimonial = async () => {
     try {
-      const response = await axiosInstance.get("/data/testimonials");
+      const testimonialResponse = await axiosInstance.get("/data/testimonials");
 
-      setTestimonial(response.data.data);
+      setTestimonial(testimonialResponse.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const renderTestimonial = () => {
-    return testimonial.map((val, id) => {
+    return testimonial.map((val) => {
       return (
-        <div className="bubble">
+        <div className="bubble" key={val.id}>
           <div className="grid1">
             <div className="vl"></div>
-            <div className="testimoni">{val.testi}</div>
+            <div className="testimoni">{val.testimonial}</div>
           </div>
           <div className="grid2">
             <div className="item1">
-              <div className="testi-image">{val.picture}</div>
+              <img src={val.picture} alt="icon" className="testi-image" />
             </div>
             <div className="item2">
               <div className="testi-name">{val.title}</div>
@@ -104,24 +102,24 @@ function App() {
 
   const fetchContact = async () => {
     try {
-      const response = await axiosInstance.get("/data/contacts");
+      const contactResponse = await axiosInstance.get("/data/contacts");
 
-      setContact(response.data.data);
+      setContact(contactResponse.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const renderContact = () => {
-    return contact.map((val, id) => {
+    return contact.map((val) => {
       return (
-        <div className="talk-item">
-          <div className="talk-icon">{val.icon}</div>
+        <div className="talk-item" key={val.id}>
+          <img src={val?.icon} alt="icon" className="talk-icon" />
           <div className="talk-title">{val.title}</div>
           <div className="talk-sub">{val.sub}</div>
           <div className="talk-desc">
             {val.desc}
-            <i class="uil uil-arrow-right"></i>
+            <i className="uil uil-arrow-right"></i>
           </div>
         </div>
       );
@@ -158,7 +156,7 @@ function App() {
             krish<span className="span">4alex</span>
           </div>
           <br />
-          <div className="home-subtitle"> User Interface Designer</div>
+          <div className="home-subtitle">User Interface Designer</div>
           <br />
           <div className="home-desc">
             I’m UI/UX designer in lucknow , and I’m very passionate <br />
@@ -167,14 +165,19 @@ function App() {
           <br />
           <button className="hello-button">
             say Hello
-            <i class="uil uil-telegram-alt" style={{ marginLeft: "15px" }}></i>
+            <i
+              className="uil uil-telegram-alt"
+              style={{ marginLeft: "15px" }}
+            ></i>
           </button>
         </div>
         <img src={homePict} alt="images" />
       </div>
-      <div className="scroll">
-        scroll down <i class="uil uil-arrow-down"></i>
-      </div>
+      <a href="#contact">
+        <div className="scroll">
+          scroll down <i className="uil uil-arrow-down"></i>
+        </div>
+      </a>
 
       {/* ================ About me ================ */}
       <div className="title" id="about">
@@ -194,7 +197,7 @@ function App() {
             <button className="about-button">
               Download cv
               <i
-                class="uil uil-file-download-alt"
+                className="uil uil-file-download-alt"
                 style={{ marginLeft: "10px" }}
               ></i>
             </button>
@@ -210,8 +213,8 @@ function App() {
       <div className="skills-container1">
         {skill.slice(0, 4).map((val) => {
           return (
-            <div className="skill-grid">
-              <div className="skill-item-icon">{val.icon}</div>
+            <div className="skill-grid" key={val.id}>
+              <img className="skill-item-image" src={val?.icon} alt="icon" />
               <div className="skill-item-title">{val.title}</div>
               <div className="skill-item-sub">{val.sub}</div>
             </div>
@@ -221,8 +224,8 @@ function App() {
       <div className="skills-container2">
         {skill.slice(4, 9).map((val) => {
           return (
-            <div className="skill-grid">
-              <div className="skill-item-icon">{val.icon}</div>
+            <div className="skill-grid" key={val.id}>
+              <img className="skill-item-image" src={val?.icon} alt="icon" />
               <div className="skill-item-title">{val.title}</div>
               <div className="skill-item-sub">{val.sub}</div>
             </div>
@@ -244,11 +247,11 @@ function App() {
       <div className="sub-title">My Personal journey</div>
       <div className="qualification-grid">
         <div className="qualification-item">
-          <i class="uil uil-graduation-cap"></i>
+          <i className="uil uil-graduation-cap"></i>
           Education
         </div>
         <div className="qualification-item">
-          <i class="uil uil-briefcase"></i>
+          <i className="uil uil-briefcase"></i>
           Experience
         </div>
       </div>
@@ -334,13 +337,16 @@ function App() {
           </div>
           <button className="message-button">
             Send Message
-            <i class="uil uil-telegram-alt" style={{ marginLeft: "15px" }}></i>
+            <i
+              className="uil uil-telegram-alt"
+              style={{ marginLeft: "15px" }}
+            ></i>
           </button>
         </div>
       </div>
 
       {/* ================ Footer ================ */}
-      <div className="footer">
+      <div className="footer" id="footer">
         <div className="footer-name">
           Krish<span className="span">4alex</span>
         </div>
@@ -364,16 +370,16 @@ function App() {
 
         <div className="footer-socials">
           <div className="socials-facebook">
-            <i class="uil uil-facebook"></i>
+            <i className="uil uil-facebook"></i>
           </div>
           <div className="socials-twitter">
-            <i class="uil uil-twitter"></i>
+            <i className="uil uil-twitter"></i>
           </div>
           <div className="socials-linkedin">
-            <i class="uil uil-linkedin"></i>
+            <i className="uil uil-linkedin"></i>
           </div>
           <div className="socials-instagram">
-            <i class="uil uil-instagram"></i>
+            <i className="uil uil-instagram"></i>
           </div>
         </div>
 

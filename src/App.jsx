@@ -3,13 +3,15 @@ import axiosInstance from "../src/api/index";
 import { useEffect, useState } from "react";
 import homePict from "./assets/homePict.png";
 import aboutPict from "./assets/aboutPict.png";
-
 function App() {
   const [about, setAbout] = useState([]);
   const [skill, setSkill] = useState([]);
   const [service, setService] = useState([]);
   const [contact, setContact] = useState([]);
   const [testimonial, setTestimonial] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [project, setProject] = useState("");
 
   const fetchAbout = async () => {
     try {
@@ -88,7 +90,7 @@ function App() {
           </div>
           <div className="grid2">
             <div className="item1">
-              <img src={val.picture} alt="icon" className="testi-image" />
+              <img src={val?.picture} alt="icon" className="testi-image" />
             </div>
             <div className="item2">
               <div className="testi-name">{val.title}</div>
@@ -124,6 +126,19 @@ function App() {
         </div>
       );
     });
+  };
+
+  const saveProject = async (e) => {
+    try {
+      await axiosInstance.post("/project", {
+        name,
+        email,
+        project,
+      });
+      alert("Your message was sent successfully!");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -328,21 +343,41 @@ function App() {
           Talk to me
           {renderContact()}
         </div>
-        <div>
-          Write me your project
-          <div className="project-grid">
-            <div className="project-item">Insert your name</div>
-            <div className="project-item">Insert your email</div>
-            <div className="project-item3">Write your project</div>
+        <form onSubmit={saveProject}>
+          <div>
+            Write me your project
+            <div className="project-grid">
+              <input
+                type="text"
+                className="project-item"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Insert your name"
+              />
+              <input
+                type="text"
+                className="project-item"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Insert your email"
+              />
+              <input
+                type="text"
+                className="project-item3"
+                value={project}
+                onChange={(e) => setProject(e.target.value)}
+                placeholder="Write your project"
+              />
+            </div>
+            <button type="submit" className="message-button">
+              Send Message
+              <i
+                className="uil uil-telegram-alt"
+                style={{ marginLeft: "15px" }}
+              ></i>
+            </button>
           </div>
-          <button className="message-button">
-            Send Message
-            <i
-              className="uil uil-telegram-alt"
-              style={{ marginLeft: "15px" }}
-            ></i>
-          </button>
-        </div>
+        </form>
       </div>
 
       {/* ================ Footer ================ */}
